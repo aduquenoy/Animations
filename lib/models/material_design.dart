@@ -1,3 +1,4 @@
+import 'package:Animation/models/data.dart';
 import 'package:flutter/material.dart';
 
 class MyDivider extends Divider{
@@ -15,4 +16,8 @@ class MyScaffold extends Scaffold{
     appBar: AppBar(title: Text(title)),
     body: destination,
   );
+}
+
+class EmptyWidget extends Center{
+  EmptyWidget() : super(child: Image.asset(Data().flutter));
 }

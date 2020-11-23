@@ -6,12 +6,15 @@ class AnimatedContainerDemo extends StatefulWidget {
 }
 
 class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
-  Duration _duration = Duration(seconds: 2);
+  Duration _duration = Duration(seconds: 2);  
+  Color _color = Colors.blue;
+  bool _shadow = true;
+  bool _radius = true;
+
   double min = 0;
   double max = 300;
   double heightValue = 150;
   double widthValue = 150;
-  Color _color = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +30,12 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
-                offset: Offset(3, 0),
-                spreadRadius: 2.5,
-                blurRadius: 3,
+                offset: (_shadow) ? Offset(3, 0) : Offset(0, 0),
+                spreadRadius: (_shadow) ? 2.5 : 0,
+                blurRadius: (_shadow) ? 3 : 0,
               )
             ],
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: (_radius) ? BorderRadius.circular(25) : BorderRadius.circular(0),
           ),
           duration: _duration,
           curve: Curves.linear,
@@ -80,6 +83,23 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
                     ),
                   ],
                 ),
+                const Padding(padding: EdgeInsets.all(15)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Shadow: $_shadow"),
+                    Switch(value: _shadow, onChanged: (newValue) => setState(() => _shadow = newValue)),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.all(15)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Radius: $_radius"),
+                    Switch(value: _radius, onChanged: (newValue) => setState(() => _radius = newValue)),
+                  ],
+                ),
+                
               ],
             ),
           ),
