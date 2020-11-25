@@ -1,5 +1,7 @@
 import 'package:Animation/animations/animatedCrossFade.dart';
 import 'package:Animation/animations/animatedOpacity.dart';
+import 'package:Animation/animations/animatedPosition.dart';
+import 'package:Animation/animations/animatedSize.dart';
 import 'package:Animation/animations/animatedText.dart';
 import 'package:Animation/animations/fadeIn.dart';
 import 'package:Animation/models/material_design.dart';
@@ -14,8 +16,8 @@ class OtherAnimatedList extends StatelessWidget {
     Section(name: "Opacity", icon: Icons.menu, destination: AnimatedOpacityDemo()),
     Section(name: "Cross Fade", icon: Icons.menu, destination: AnimatedCrossFadeDemo()),
     Section(name: "Textstyle", icon: Icons.menu, destination: AnimatedTextStyleDemo()),
-    Section(name: "Size", icon: Icons.menu, destination: EmptyWidget()),
-    Section(name: "Positionnement", icon: Icons.menu, destination: EmptyWidget()),
+    Section(name: "Size", icon: Icons.menu, destination: AnimatedSizeDemo()),
+    Section(name: "Positionnement", icon: Icons.menu, destination: AnimatedPositionDemo()),
   ];
 
   @override
