@@ -4,6 +4,7 @@ import 'package:Animation/models/data.dart';
 import 'package:Animation/models/material_design.dart';
 import 'package:Animation/models/section.dart';
 import 'package:Animation/pages/other_animated_list.dart';
+import 'package:Animation/pages/transition_list.dart';
 import 'package:Animation/widgets/tile.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
     Section(name: "Les autres Animated", icon: Icons.local_movies, destination: OtherAnimatedList()),
     Section(name: "Hero", icon: Icons.flash_on, destination: HeroList()),
     Section(name: "Animated list", icon: Icons.list, destination: AnimatedListDemo()),
+    Section(name: "Transition", icon: Icons.compare_arrows, destination: TransitionList()),
   ];
 
   @override
