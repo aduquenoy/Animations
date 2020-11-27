@@ -1,5 +1,7 @@
 import 'package:Animation/animations/AnimatedContainer.dart';
+import 'package:Animation/animations/animatedBuilder.dart';
 import 'package:Animation/animations/animatedList.dart';
+import 'package:Animation/animations/animatedPhysicalModel.dart';
 import 'package:Animation/models/data.dart';
 import 'package:Animation/models/material_design.dart';
 import 'package:Animation/models/section.dart';
@@ -14,10 +16,12 @@ class HomePage extends StatelessWidget {
 
   final List<Section> _sections = [
     Section(name: "Animated container", icon: Icons.score, destination: AnimatedContainerDemo()),
-    Section(name: "Les autres Animated", icon: Icons.local_movies, destination: OtherAnimatedList()),
-    Section(name: "Hero", icon: Icons.flash_on, destination: HeroList()),
     Section(name: "Animated list", icon: Icons.list, destination: AnimatedListDemo()),
+    Section(name: "Animated builder", icon: Icons.build, destination: AnimatedBuilderDemo()),
+    Section(name: "Animated physical model", icon: Icons.menu, destination: AnimatedPhysicalModelDemo()),
+    Section(name: "Animated other", icon: Icons.local_movies, destination: OtherAnimatedList()),
     Section(name: "Transition", icon: Icons.compare_arrows, destination: TransitionList()),
+    Section(name: "Hero", icon: Icons.flash_on, destination: HeroList()),
   ];
 
   @override

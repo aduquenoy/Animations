@@ -3,7 +3,7 @@ import 'package:Animation/animations/animatedOpacity.dart';
 import 'package:Animation/animations/animatedPosition.dart';
 import 'package:Animation/animations/animatedSize.dart';
 import 'package:Animation/animations/animatedText.dart';
-import 'package:Animation/animations/fadeIn.dart';
+import 'package:Animation/animations/animatedFadeIn.dart';
 import 'package:Animation/models/material_design.dart';
 import 'package:Animation/models/section.dart';
 import 'package:Animation/widgets/tile.dart';

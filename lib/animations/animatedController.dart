@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class AnimatedControllerDemo extends StatefulWidget {
   final TransitionType type;
-
   const AnimatedControllerDemo(this.type);
 
   @override
@@ -27,7 +26,7 @@ class _AnimatedControllerDemoState extends State<AnimatedControllerDemo>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: _duration);
+        AnimationController(duration: _duration, vsync: this);
     _curvedAnimation =
         CurvedAnimation(parent: _animationController, curve: Curves.linear);
     setupDecoration();
@@ -88,6 +87,10 @@ class _AnimatedControllerDemoState extends State<AnimatedControllerDemo>
         return rotation();
       case TransitionType.scale:
         return scale();
+      case TransitionType.size:
+        return size();
+      case TransitionType.slide:
+        return slide();
       default:
         return EmptyWidget();
     }
@@ -147,7 +150,7 @@ class _AnimatedControllerDemoState extends State<AnimatedControllerDemo>
   }
 
   RotationTransition rotation() {
-    Tween<double> tween = Tween<double>(begin:0, end: 0.75);
+    Tween<double> tween = Tween<double>(begin: 0, end: 0.75);
     return RotationTransition(
       turns: tween.animate(_curvedAnimation),
       child: _image,
@@ -155,9 +158,24 @@ class _AnimatedControllerDemoState extends State<AnimatedControllerDemo>
   }
 
   ScaleTransition scale() {
-    Tween<double> tween = Tween<double>(begin:0, end: 0.8);
+    Tween<double> tween = Tween<double>(begin: 0, end: 0.8);
     return ScaleTransition(
       scale: tween.animate(_curvedAnimation),
+      child: _image,
+    );
+  }
+
+  SizeTransition size() {
+    return SizeTransition(
+      sizeFactor: Tween<double>(begin: 1, end: 0).animate(_curvedAnimation),
+      axis: Axis.horizontal,
+      child: _image,
+    );
+  }
+
+  SlideTransition slide() {
+    return SlideTransition(
+      position: Tween<Offset>(begin: Offset(-1,-1), end: Offset(0,0)).animate(_curvedAnimation),
       child: _image,
     );
   }
