@@ -11,6 +11,7 @@ class _AnimatedListenerDemoState extends State<AnimatedListenerDemo>
   AnimationController _animationController;
   Duration _duration = Duration(seconds: 2);
   Animation<double> _animation;
+  bool opacity = false;
 
   @override
   void initState() {
@@ -22,14 +23,25 @@ class _AnimatedListenerDemoState extends State<AnimatedListenerDemo>
     );
 
     _animation = Tween<double>(
-      begin: -0.2,
-      end: 0.2,
+      begin: 0,
+      end: 1,
     ).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.linear,
       ),
-    )..addListener(() {
+    )..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              //_animationController.reverse();
+              //Data().pusher(context, "After animation", Center(child: Text("Nouvelle page"),));
+              setState(() {
+                opacity = !opacity;
+              });
+            } else if (status == AnimationStatus.dismissed) {
+              _animationController.forward();
+            }
+          })
+        /* ..addListener(() {
       print(_animationController.value);
 
       if(_animationController.isCompleted){
@@ -37,7 +49,8 @@ class _AnimatedListenerDemoState extends State<AnimatedListenerDemo>
       }else if(_animationController.isDismissed){
         _animationController.forward();
       }
-    });
+    }) */
+        ;
 
     _animationController.forward();
   }
@@ -53,7 +66,11 @@ class _AnimatedListenerDemoState extends State<AnimatedListenerDemo>
     return Center(
       child: RotationTransition(
         turns: _animation,
-        child: Image.asset(Data().flutter),
+        child: AnimatedOpacity(
+          opacity: (opacity) ? 0 : 1,
+          duration: Duration(seconds: 1),
+          child: Image.asset(Data().flutter),
+        ),
       ),
     );
   }

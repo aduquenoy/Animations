@@ -13,6 +13,7 @@ import 'package:Animation/widgets/tile.dart';
 import 'package:flutter/material.dart';
 
 import 'hero_list.dart';
+import 'menu_page.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -26,6 +27,7 @@ class HomePage extends StatelessWidget {
     Section(name: "Transition", icon: Icons.compare_arrows, destination: TransitionList()),
     Section(name: "Hero", icon: Icons.flash_on, destination: HeroList()),
     Section(name: "Graphique", icon: Icons.show_chart, destination: Graph()),
+    Section(name: "Animated menu", icon: Icons.menu, destination: MenuPage())
   ];
 
   @override
